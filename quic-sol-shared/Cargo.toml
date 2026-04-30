@@ -1,0 +1,19 @@
+[package]
+name        = "quic-sol-shared"
+description = "Shared types, errors, and QUIC helpers for quic-sol"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+tokio.workspace        = true
+quinn.workspace        = true
+rustls.workspace       = true
+thiserror.workspace    = true
+anyhow.workspace       = true
+tracing.workspace      = true
+serde.workspace        = true
+bytes.workspace        = true
+serde_json.workspace   = true
+webpki-roots.workspace = true

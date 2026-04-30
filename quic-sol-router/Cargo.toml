@@ -1,0 +1,17 @@
+[package]
+name = "quic-sol-router"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+tokio.workspace      = true
+quinn.workspace      = true
+thiserror.workspace  = true
+anyhow.workspace     = true
+tracing.workspace    = true
+serde.workspace      = true
+serde_json.workspace = true
+bytes.workspace      = true
+quic-sol-shared = { path = "../quic-sol-shared" }

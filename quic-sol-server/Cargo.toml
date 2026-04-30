@@ -1,0 +1,40 @@
+[package]
+name         = "quic-sol-server"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description  = "quic-sol relay server — QUIC gateway between Solana network and quic-sol clients"
+
+[[bin]]
+name = "quic-sol-server"
+path = "src/main.rs"
+
+[dependencies]
+tokio.workspace        = true
+quinn.workspace        = true
+rustls.workspace       = true
+rcgen.workspace        = true
+rustls-pemfile         = "2"
+serde.workspace        = true
+serde_json.workspace   = true
+bytes.workspace        = true
+thiserror.workspace    = true
+anyhow.workspace       = true
+tracing.workspace      = true
+tracing-subscriber     = { version = "0.3", features = ["env-filter"] }
+clap                   = { version = "4", features = ["derive", "env"] }
+toml                   = "0.8"
+tokio-tungstenite      = { version = "0.24", features = ["native-tls"] }
+futures-util           = "0.3"
+reqwest                = { version = "0.12", features = ["json", "gzip"] }
+bs58                   = "0.5"
+async-channel          = "2"
+quic-sol-shared        = { path = "../quic-sol-shared" }
+h2                     = "0.4"
+http                   = "1"
+tokio-native-tls       = "0.3"
+native-tls             = "0.2"
+ed25519-dalek          = { workspace = true }
+rand                   = { workspace = true }
+bincode                = { workspace = true }

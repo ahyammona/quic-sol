@@ -1,0 +1,29 @@
+[package]
+name        = "grpc-benchmark"
+version     = "0.1.0"
+edition     = "2021"
+description = "Benchmark: quic-sol slotIngress vs gRPC Geyser — confirmed slot arrival race"
+
+[[bin]]
+name = "grpc-benchmark"
+path = "src/main.rs"
+
+[dependencies]
+tokio              = { version = "1", features = ["full"] }
+anyhow             = "1"
+clap               = { version = "4", features = ["derive"] }
+serde_json         = "1"
+tracing            = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+futures            = "0.3"
+backoff            = { version = "0.4.0", features = ["tokio"] }
+
+# QUIC
+quinn              = "0.11"
+rustls             = { version = "0.23", default-features = false, features = ["ring"] }
+
+# gRPC — pinned exactly to 4.0.0 so proto matches working pumpfun streamer
+# = prefix means exactly this version, no upgrades
+yellowstone-grpc-client = "=4.0.0"
+yellowstone-grpc-proto  = { version = "=4.0.0", default-features = false, features = ["plugin"] }
+tonic              = "0.12"

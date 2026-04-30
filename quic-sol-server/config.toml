@@ -1,0 +1,46 @@
+# quic-sol-server — config-entrypoint.toml
+# Place this at the WORKSPACE ROOT (same folder as the top-level Cargo.toml)
+# Run with: cargo run -p quic-sol-server -- --config config-entrypoint.toml
+
+bind              = "0.0.0.0:4433"
+gossip_entrypoint = "entrypoint.mainnet-beta.solana.com:8001"
+enrich_transactions = false
+
+[tls]
+self_signed = true
+
+[auth]
+api_keys = []
+
+# ── ShredStream Ingress ───────────────────────────────────────────────────────
+# Receives decoded shreds from validator TVU ports.
+# Start empty — GossipPeerUpdater populates TVU addrs automatically from gossip.
+[shredstream]
+enabled          = true
+bind             = "0.0.0.0:8002"
+tvu_addrs        = []
+emit_code_shreds = true
+min_shred_bytes  = 64
+max_shred_bytes  = 1280
+
+# ── TPU Ingress ───────────────────────────────────────────────────────────────
+# Receives inbound transactions forwarded by validators.
+[tpu]
+enabled        = true
+bind           = "0.0.0.0:8009"
+dedup_capacity = 10000
+max_tx_bytes   = 1232
+
+[shred]
+tvu_addrs = []
+
+[price]
+binance_url  = "wss://stream.binance.com:9443/stream"
+coinbase_url = "wss://advanced-trade-ws.coinbase.com"
+okx_url      = "wss://ws.okx.com:8443/ws/v5/public"
+pairs        = ["SOLUSDC", "BTCUSDC", "ETHUSDC"]
+
+[tuning]
+client_buffer       = 512
+max_connections     = 1000
+gossip_reconnect_ms = 2000

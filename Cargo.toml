@@ -1,0 +1,38 @@
+[workspace]
+members = [
+    "quic-sol-shared",
+    "quic-sol-gossip",
+    "quic-sol-logs",
+    "quic-sol-submit",
+    "quic-sol-router",
+    "quic-sol-price",
+    "quic-sol-server",
+    "quic-sol-testclient",
+    "slot-benchmark",
+    "grpc-benchmark",
+    "latency-check"
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name"]
+license = "Apache-2.0"
+
+[workspace.dependencies]
+tokio         = { version = "1", features = ["full"] }
+quinn         = "0.11"
+rustls        = { version = "0.23", default-features = false, features = ["ring"] }
+rcgen         = "0.13"
+thiserror     = "1"
+anyhow        = "1"
+tracing       = "0.1"
+serde         = { version = "1", features = ["derive"] }
+bytes         = "1"
+serde_json    = "1.0"
+webpki-roots  = "0.26"
+ed25519-dalek = { version = "2", features = ["rand_core"] }
+rand          = "0.8"
+[workspace.dependencies.bincode]
+version = "1"

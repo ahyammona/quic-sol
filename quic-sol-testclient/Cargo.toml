@@ -1,0 +1,24 @@
+[package]
+name        = "quic-sol-testclient"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "CLI test client — connects to quic-sol-server and prints incoming frames"
+
+[[bin]]
+name = "quic-sol-testclient"
+path = "src/main.rs"
+
+[dependencies]
+tokio.workspace      = true
+quinn.workspace      = true
+rustls.workspace     = true
+serde.workspace      = true
+serde_json.workspace = true
+anyhow.workspace     = true
+tracing.workspace    = true
+tracing-subscriber   = { version = "0.3", features = ["env-filter"] }
+clap                 = { version = "4", features = ["derive"] }
+webpki-roots.workspace = true
+quic-sol-shared      = { path = "../quic-sol-shared" }
